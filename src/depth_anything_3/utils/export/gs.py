@@ -14,7 +14,8 @@
 
 import os
 from typing import Literal, Optional
-import moviepy.editor as mpy
+# import moviepy.editor as mpy
+from moviepy import ImageSequenceClip
 import torch
 
 from depth_anything_3.model.utils.gs_renderer import run_renderer_in_chunk_w_trj_mode
@@ -140,7 +141,7 @@ def export_to_gs_video(
         )  # T x H x W x C, uint8, numpy()
 
         fps = 24
-        clip = mpy.ImageSequenceClip(frames, fps=fps)
+        clip = ImageSequenceClip(frames, fps=fps)
         output_name = f"{idx:04d}_{trj_mode}" if output_name is None else output_name
         save_path = os.path.join(export_dir, f"gs_video/{output_name}.mp4")
         # clip.write_videofile(save_path, codec="libx264", audio=False, bitrate="4000k")
