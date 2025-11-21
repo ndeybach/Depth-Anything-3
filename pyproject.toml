@@ -22,7 +22,7 @@ dependencies = [
     "numpy",
     "opencv-python",
     "xformers",
-    "open3d",
+    # "open3d",
     "fastapi",
     "uvicorn",
     "requests",
